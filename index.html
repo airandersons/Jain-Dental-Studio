@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jain Dental Studio - Creating Beautiful Smiles for Life</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a7db7;
+            --primary-dark: #136092;
+            --secondary: #4fb0c6;
+            --accent: #f47a60;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Lora', serif;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin: 0;
+        }
+        
+        .logo p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin: 0;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f8f9fa"/><path d="M0 50 L100 50 M50 0 L50 100" stroke="%23e9ecef" stroke-width="2"/></svg>');
+            background-size: cover;
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--gray);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+        }
+        
+        /* Hours & Location */
+        .hours-location {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .info-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .hours, .location {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .hours h3, .location h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+        }
+        
+        .hours p, .location p {
+            margin-bottom: 10px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-detail i {
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo h2 {
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .footer-links {
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            nav li {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            
+            .hero {
+                padding: 130px 0 80px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>JAIN DENTAL STUDIO</h1>
+                <p>Creating Beautiful Smiles for Life</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#hours">Hours</a></li>
+                    <li><a href="#location">Location</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Expert Dental Care for Your Beautiful Smile</h2>
+            <p>Providing comprehensive dental services with a gentle touch and state-of-the-art technology.</p>
+            <a href="#contact" class="btn">Book an Appointment</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Dental Services</h2>
+                <p>We offer a wide range of dental treatments to keep your smile healthy and beautiful</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3>Check Up / Consultation</h3>
+                        <p>Comprehensive dental examinations and personalized treatment planning.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3>Cleaning / Scaling</h3>
+                        <p>Professional teeth cleaning to remove plaque and tartar for optimal oral health.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3>Dental Fillings</h3>
+                        <p>Tooth-colored composite fillings that restore teeth naturally.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3>Tooth Extraction</h3>
+                        <p>Gentle and careful tooth removal when necessary.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3>Root Canal Treatment</h3>
+                        <p>Painless root canal therapy to save infected teeth.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3>Wisdom Tooth Removal</h3>
+                        <p>Expert extraction of problematic wisdom teeth.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3>Teeth Braces and Aligner</h3>
+                        <p>Orthodontic treatments for perfectly aligned teeth.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3>Teeth Whitening</h3>
+                        <p>Professional whitening treatments for a brighter smile.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3>Dentures / Crowns / Bridges</h3>
+                        <p>High-quality dental prosthetics to restore your smile.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hours & Location -->
+    <section class="hours-location" id="hours">
+        <div class="container">
+            <div class="section-title">
+                <h2>Visit Our Clinic</h2>
+                <p>We're conveniently located and open to serve your dental needs</p>
+            </div>
+            <div class="info-container">
+                <div class="hours">
+                    <h3>Open Hours</h3>
+                    <p><strong>Monday–Saturday</strong></p>
+                    <p>09:00AM–05:00PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+                <div class="location" id="location">
+                    <h3>Our Location</h3>
+                    <p>GROUND FLOOR SHOP NO. 1</p>
+                    <p>Krish Mall, Bugolobi</p>
+                    <p>Kampala, Uganda</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Reach out to schedule an appointment or ask any questions</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-detail">
+                        <i>📞</i>
+                        <span>+256 751 91 3678</span>
+                    </div>
+                    <div class="contact-detail">
+                        <i>📞</i>
+                        <span>+256 707 96 3456</span>
+                    </div>
+                    <div class="contact-detail">
+                        <i>📧</i>
+                        <span>Dr.Nupurstudio@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>JAIN DENTAL STUDIO</h2>
+                    <p>Creating Beautiful Smiles for Life</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#services">Services</a>
+                    <a href="#hours">Hours</a>
+                    <a href="#location">Location</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2023 Jain Dental Studio. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
