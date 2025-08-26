@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jain Dental Studio - Creating Beautiful Smiles for Life</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #1a7db7;
-            --primary-dark: #136092;
-            --secondary: #4fb0c6;
-            --accent: #f47a60;
+            --primary-light: #4fb0c6;
+            --secondary: #f47a60;
+            --accent: #ffd166;
             --light: #f8f9fa;
-            --dark: #212529;
-            --gray: #6c757d;
+            --dark: #2d3748;
+            --gray: #718096;
             --light-gray: #e9ecef;
+            --white: #ffffff;
         }
         
         * {
@@ -24,14 +26,17 @@
         }
         
         body {
-            font-family: 'Open Sans', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             color: var(--dark);
             line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--white);
         }
         
         h1, h2, h3, h4 {
-            font-family: 'Lora', serif;
+            font-family: 'Playfair Display', serif;
             margin-bottom: 1rem;
+            color: var(--primary);
         }
         
         .container {
@@ -43,12 +48,13 @@
         
         /* Header Styles */
         header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: all 0.3s ease;
         }
         
         .header-container {
@@ -56,6 +62,11 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
         }
         
         .logo h1 {
@@ -77,6 +88,7 @@
         
         nav li {
             margin-left: 30px;
+            position: relative;
         }
         
         nav a {
@@ -84,101 +96,185 @@
             color: var(--dark);
             font-weight: 600;
             transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-light);
+            transition: width 0.3s ease;
         }
         
         nav a:hover {
             color: var(--primary);
         }
         
+        nav a:hover:after {
+            width: 100%;
+        }
+        
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f8f9fa"/><path d="M0 50 L100 50 M50 0 L50 100" stroke="%23e9ecef" stroke-width="2"/></svg>');
+            background: linear-gradient(120deg, rgba(26, 125, 183, 0.85), rgba(79, 176, 198, 0.85)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23ffffff"/><path d="M0 50 L100 50 M50 0 L50 100" stroke="rgba(255,255,255,0.2)" stroke-width="2"/></svg>');
             background-size: cover;
-            padding: 150px 0 100px;
+            padding: 180px 0 100px;
             text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
         
         .hero h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
+            font-size: 3rem;
+            color: white;
             margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         .hero p {
             font-size: 1.2rem;
-            max-width: 700px;
             margin: 0 auto 30px;
-            color: var(--gray);
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
         }
         
         .btn {
             display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 12px 30px;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 14px 32px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         
         .btn:hover {
-            background-color: var(--primary-dark);
+            background-color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
         }
         
         /* Services Section */
         .services {
-            padding: 80px 0;
-            background-color: var(--light);
+            padding: 100px 0;
+            background: linear-gradient(to bottom, #f8f9fa, #ffffff);
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
         
         .section-title h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         .section-title p {
             color: var(--gray);
             max-width: 700px;
-            margin: 0 auto;
+            margin: 20px auto 0;
+            font-size: 1.1rem;
         }
         
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
         
         .service-card {
             background-color: white;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: -1;
         }
         
         .service-card:hover {
             transform: translateY(-10px);
         }
         
+        .service-card:hover:before {
+            height: 100%;
+            opacity: 0.05;
+        }
+        
         .service-content {
-            padding: 25px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, var(--primary-light), var(--primary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            box-shadow: 0 6px 16px rgba(26, 125, 183, 0.25);
         }
         
         .service-content h3 {
             color: var(--primary);
-            font-size: 1.4rem;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .service-content p {
+            color: var(--gray);
         }
         
         /* Hours & Location */
         .hours-location {
-            padding: 80px 0;
-            background-color: white;
+            padding: 100px 0;
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
         }
         
         .info-container {
@@ -188,27 +284,66 @@
         }
         
         .hours, .location {
-            background-color: var(--light);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hours:hover, .location:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .hours:before, .location:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-light), var(--secondary));
         }
         
         .hours h3, .location h3 {
             color: var(--primary);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--secondary);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--light-gray);
+            position: relative;
+        }
+        
+        .hours h3:after, .location h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+            bottom: -1px;
+            left: 0;
         }
         
         .hours p, .location p {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hours i, .location i {
+            margin-right: 12px;
+            color: var(--primary-light);
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
         }
         
         /* Contact Section */
         .contact {
-            padding: 80px 0;
-            background-color: var(--light);
+            padding: 100px 0;
+            background: linear-gradient(to bottom, #f8f9fa, #ffffff);
         }
         
         .contact-container {
@@ -218,42 +353,71 @@
         }
         
         .contact-info {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
         }
         
         .contact-info h3 {
             color: var(--primary);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--secondary);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--light-gray);
+            position: relative;
+        }
+        
+        .contact-info h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+            bottom: -1px;
+            left: 0;
         }
         
         .contact-detail {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
-        .contact-detail i {
-            width: 30px;
-            height: 30px;
-            background-color: var(--primary);
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary-light), var(--primary));
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-right: 15px;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(26, 125, 183, 0.25);
+        }
+        
+        .contact-text {
+            color: var(--gray);
+        }
+        
+        .contact-text strong {
+            color: var(--dark);
+            display: block;
+            margin-bottom: 4px;
         }
         
         /* Footer */
         footer {
-            background-color: var(--primary-dark);
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
             color: white;
-            padding: 40px 0 20px;
+            padding: 60px 0 20px;
             text-align: center;
         }
         
@@ -264,55 +428,146 @@
         }
         
         .footer-logo {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         
         .footer-logo h2 {
             color: white;
-            font-size: 2rem;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .footer-logo p {
+            color: rgba(255, 255, 255, 0.8);
         }
         
         .footer-links {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
         }
         
         .footer-links a {
             color: white;
-            margin: 0 15px;
             text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.1);
         }
         
         .footer-links a:hover {
-            text-decoration: underline;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
         }
         
         .copyright {
             margin-top: 20px;
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.7);
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
         }
         
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.5rem;
             }
             
             nav ul {
-                margin-top: 15px;
+                gap: 15px;
             }
             
             nav li {
                 margin-left: 15px;
-                margin-right: 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
             .hero {
-                padding: 130px 0 80px;
+                padding: 150px 0 80px;
             }
             
             .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
                 font-size: 2rem;
+            }
+            
+            .service-card, .hours, .location, .contact-info {
+                padding: 25px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-container, .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -322,8 +577,10 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <h1>JAIN DENTAL STUDIO</h1>
-                <p>Creating Beautiful Smiles for Life</p>
+                <div>
+                    <h1>JAIN DENTAL STUDIO</h1>
+                    <p>Creating Beautiful Smiles for Life</p>
+                </div>
             </div>
             <nav>
                 <ul>
@@ -339,9 +596,11 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h2>Expert Dental Care for Your Beautiful Smile</h2>
-            <p>Providing comprehensive dental services with a gentle touch and state-of-the-art technology.</p>
-            <a href="#contact" class="btn">Book an Appointment</a>
+            <div class="hero-content">
+                <h2>Expert Dental Care for Your Beautiful Smile</h2>
+                <p>Providing comprehensive dental services with a gentle touch and state-of-the-art technology in a comfortable environment.</p>
+                <a href="#contact" class="btn">Book an Appointment</a>
+            </div>
         </div>
     </section>
 
@@ -355,54 +614,81 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
                         <h3>Check Up / Consultation</h3>
                         <p>Comprehensive dental examinations and personalized treatment planning.</p>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-pump-soap"></i>
+                        </div>
                         <h3>Cleaning / Scaling</h3>
                         <p>Professional teeth cleaning to remove plaque and tartar for optimal oral health.</p>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-tooth"></i>
+                        </div>
                         <h3>Dental Fillings</h3>
                         <p>Tooth-colored composite fillings that restore teeth naturally.</p>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-teeth"></i>
+                        </div>
                         <h3>Tooth Extraction</h3>
                         <p>Gentle and careful tooth removal when necessary.</p>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-syringe"></i>
+                        </div>
                         <h3>Root Canal Treatment</h3>
                         <p>Painless root canal therapy to save infected teeth.</p>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-wisdom-teeth"></i>
+                        </div>
                         <h3>Wisdom Tooth Removal</h3>
                         <p>Expert extraction of problematic wisdom teeth.</p>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-teeth-open"></i>
+                        </div>
                         <h3>Teeth Braces and Aligner</h3>
                         <p>Orthodontic treatments for perfectly aligned teeth.</p>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-smile"></i>
+                        </div>
                         <h3>Teeth Whitening</h3>
                         <p>Professional whitening treatments for a brighter smile.</p>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
                         <h3>Dentures / Crowns / Bridges</h3>
                         <p>High-quality dental prosthetics to restore your smile.</p>
                     </div>
@@ -421,15 +707,15 @@
             <div class="info-container">
                 <div class="hours">
                     <h3>Open Hours</h3>
-                    <p><strong>Monday–Saturday</strong></p>
-                    <p>09:00AM–05:00PM</p>
-                    <p>Sunday: Closed</p>
+                    <p><i class="far fa-clock"></i> <strong>Monday–Saturday</strong></p>
+                    <p><i class="far fa-calendar-alt"></i> 09:00AM–05:00PM</p>
+                    <p><i class="fas fa-ban"></i> Sunday: Closed</p>
                 </div>
                 <div class="location" id="location">
                     <h3>Our Location</h3>
-                    <p>GROUND FLOOR SHOP NO. 1</p>
-                    <p>Krish Mall, Bugolobi</p>
-                    <p>Kampala, Uganda</p>
+                    <p><i class="fas fa-map-marker-alt"></i> GROUND FLOOR SHOP NO. 1</p>
+                    <p><i class="fas fa-building"></i> Krish Mall, Bugolobi</p>
+                    <p><i class="fas fa-map-pin"></i> Kampala, Uganda</p>
                 </div>
             </div>
         </div>
@@ -446,16 +732,31 @@
                 <div class="contact-info">
                     <h3>Get In Touch</h3>
                     <div class="contact-detail">
-                        <i>📞</i>
-                        <span>+256 751 91 3678</span>
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong>Call Us</strong>
+                            <span>+256 751 91 3678</span>
+                        </div>
                     </div>
                     <div class="contact-detail">
-                        <i>📞</i>
-                        <span>+256 707 96 3456</span>
+                        <div class="contact-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong>Alternative Number</strong>
+                            <span>+256 707 96 3456</span>
+                        </div>
                     </div>
                     <div class="contact-detail">
-                        <i>📧</i>
-                        <span>Dr.Nupurstudio@gmail.com</span>
+                        <div class="contact-icon">
+                            <i class="far fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong>Email Us</strong>
+                            <span>Dr.Nupurstudio@gmail.com</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -476,11 +777,31 @@
                     <a href="#location">Location</a>
                     <a href="#contact">Contact</a>
                 </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
                 <div class="copyright">
                     <p>&copy; 2023 Jain Dental Studio. All rights reserved.</p>
                 </div>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Simple animation for header on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+                header.style.padding = '10px 0';
+            } else {
+                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)';
+                header.style.padding = '15px 0';
+            }
+        });
+    </script>
 </body>
-</html>
+                            </html>
